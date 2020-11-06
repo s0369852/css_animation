@@ -19,8 +19,8 @@ section, summary, time,mark,
 audio, video {margin: 0; padding: 0; border: 0; box-sizing: border-box;}
 
 /* 폰트 초기화 */
-body, input, textarea, select, button, table {
-    font-family: 'Roboto', AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif, serif; 
+body, input, textarea, select, button, table { 
+    font-family: 'Source Sans Pro', 'Roboto', AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif, serif; 
     font-size: 14px;
     line-height: 1.5;
     color: #000000;  
