@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider06 - 좌우로 움직이는 슬라이드</title>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+    
+    <style>
+        @font-face { font-family: 'fromdamiM'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_ten@1.0/fromdamiM.woff') format('woff'); font-weight: normal; font-style: normal; }
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        a {text-decoration: none; color: #fff;}
+        img {width: 100%; vertical-align: top;}
+        ul {padding: 10px 20px;}
+        
+        body {
+            background-color: #242321;
+            font-family: 'Finger Paint', cursive;
+            color: #fff;
+            height: 100vh;
+        }
+
+        #section5 {
+            width: 100%;
+            background-color: var(--color-back);
+        }
+
+        .container {
+            position: relative;
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* slide */
+
+        .slider-wrap {position: relative; height: 100vh;}
+
+        .slider-wrap .title {
+            position: absolute;
+            left: 10%;
+            top: 3%;
+            z-index: 1000;
+            font-size: 4rem;
+        }
+
+
+        .slider-box {
+            width: 100vw; 
+            overflow: hidden;
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+        }
+        .slider-img {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .slider-img .sliders {
+            width: 625px;
+            height: 700px;
+            display: flex;
+            position: relative;
+            justify-content: center;
+            margin: 0 15%;
+        }
+
+        .slider-img .sliders .content iframe {
+            width: 46vw;
+            height: 100%;
+        }
+
+        .slider-img .sliders .content h2 {
+            position: absolute;
+            bottom: 8vw;
+            left: -8vw;
+            font-size: 3vw;
+        }
+        .slider-img .sliders .content p {
+            position: absolute;
+            bottom: 6vw;
+            left: -8vw;
+        }
+        .slider-img .sliders .content ul {
+            position: absolute;
+            bottom: 1vw;
+            left: -5vw;
+        }
+
+        .slider-img .sliders img {
+            width: 50vw; 
+            height: 60vh;
+        }
+        .slider-btn a{
+            position: absolute;
+            bottom: 3%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            padding: 1vw;
+            background: rgba(0, 0, 0, 0.5);
+            width: auto;
+            font-size: 1.5vw;
+            text-transform: uppercase;
+        }
+        .slider-btn .prev {
+            left: 15%;
+        }
+        .slider-btn .next {
+            right: 15%;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- slider -->
+    <section id="section5">
+        <div class="container">
+            <div class="row">
+                <div class="slider-wrap">
+                    <div class="title">
+                        <h2>SCRIPT</h2>
+                    </div>
+                    <div class="slider-box">
+                        <div class="slider-img">
+                            <div class="sliders s1">
+                                <div class="content">
+                                    <iframe src="asset/ani/parallax.html" frameborder="0"></iframe>
+                                    <h2>PARALLAX</h2>
+                                    <p>Parallax, Javascript, css variables, Resolution Image</p>
+                                    <ul>
+                                        <li>Parallax Scrolling / Text Effect /</li>
+                                        <li>localStorage / createElement / forEach</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sliders s2">
+                                <div class="content">
+                                    <iframe src="asset/ani/todolist.html" frameborder="0"></iframe>
+                                    <h2>TODOLIST</h2>
+                                    <p>Vanilla Javascript, CSS3, Background Image</p>
+                                    <ul>
+                                        <li>ToDoList / Greeting / Clock</li>
+                                        <li>pageYOffset / offsetTop / forEach</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sliders s3">
+                                <div class="content">
+                                    <iframe src="asset/ani/mouse07.html" frameborder="0"></iframe>
+                                    <h2>MOUSEEFFECT</h2>
+                                    <p>Vanilla Javascript, CSS3, Background Image</p>
+                                    <ul>
+                                        <li>ToDoList / Greeting / Clock</li>
+                                        <li>pageYOffset / offsetTop / forEach</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-btn">
+                    <a href="#" class="prev">prev</a>
+                    <a href="#" class="next">next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- script -->
+    <script src="asset/js/jquery.min_1.12.4.js"></script>
+    <script>
+        const sliderWrap = $(".slider-box");
+        const sliderImg = $(".slider-img");
+        const sliders = $(".sliders");
+        const sliderBtn = $(".slider-btn");
+
+        let slideCount = sliders.length;
+        let slideWidth = sliders.width();
+        let slideHeight = sliders.height();
+        let slideTotalWidth = slideCount * slideWidth;
+
+        sliders.css({width: slideWidth, height: slideHeight});
+        sliderImg.css({width: slideTotalWidth, height: slideHeight});
+        $(".sliders:last-child").prependTo(sliderImg);
+
+        function moveLeft() {
+            sliderImg.animate({left: +slideWidth}, 400, function() {
+                $(".sliders:last-child").prependTo(sliderImg);
+                sliderImg.css("left","");
+            });
+        }
+        function moveRight() {
+            sliderImg.animate({left: - slideWidth}, 400, function() {
+                $(".sliders:first-child").appendTo(sliderImg);
+                sliderImg.css("left","");
+            });
+        }
+
+        sliderBtn.find(".prev").click(function(){
+            moveLeft()
+        });
+        sliderBtn.find(".next").click(function(){
+            moveRight()
+        });
+    </script>
+</body>
+</html>
