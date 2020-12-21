@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="shortcut icon" href="#">
+
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff" rel="stylesheet">
+
+    <style>
+/* reset--------------------------------------------------------------------------------------------------------------- */
+    @charset "UTF-8";
+
+    /* 여백 초기화, 박스 사이즈 */
+    html, body, div, span, applet, object, iframe,
+    h3, h2, h3, h4, h5, h6,
+    p, blockquote,
+    pre, a, abbr, acronym, address,
+    big, cite, code, del, dfn,
+    em, img, ins, kbd, q, s,
+    samp, small, strike, strong,
+    sub, sup, tt, var, b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend, table, caption,
+    tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed,
+    figure, figcaption, footer, header,
+    hgroup, menu, nav, output, ruby,
+    section, summary, time,mark,
+    audio, video {margin: 0; padding: 0; border: 0; box-sizing: border-box;}
+
+    /* 폰트 초기화 */
+    body, input, textarea, select, button, table { 
+        font-family: 'Source Sans Pro', 'Roboto', AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif, serif; 
+        font-size: 14px;
+        line-height: 1.5;
+        color: #000000;  
+    }
+
+    /* 폰트 스타일 초기화 */
+    em, address {font-style: normal; font-weight: normal;}
+
+    /* 제목 태그 초기화 */
+    h3, h2, h3, h4, h5, h6 {font-size: 14px; font-weight: normal;}
+
+    /* a태그 초기화 */
+    a {color: #000; text-decoration: none;}
+
+    a:link, a:visited {color: #000000; text-decoration: none;}
+
+    a:active, a:hover {text-decoration: none;}
+
+    /* 이미지 테두리 초기화 + 사이즈 */
+    fieldset, img, video {border: 0; display: inline-block; max-width: 100%;}
+
+    /* 블릿 기호 초기화 */
+    dl, ul, ol, menu, li {list-style: none;}
+
+    /* 버튼 초기화 */
+    input, select, textarea, button {vertical-align: middle; border: 0; background: transparent; outline: none;}
+
+    /* clearfix */
+    .clearfix {*zoom: 1;}
+    .clearfix::before, .clearfix::after {content: ""; display: block; line-height: 0;}
+    .clearfix::after {clear: both;}
+
+    /* ir효과 */
+    .ir_pm {display: block; overflow: hidden; font-size: 0; line-height: 0; text-indent: -9999px;}
+    .ir_wa {position: relative; display: block; overflow: hidden; width: 100%; height: 100%; z-index: 1;}
+    .ir_so {position: absolute; overflow: hidden; width: 0; height: 0; line-height: 0; text-indent: -9999px;}
+
+    /* input 스타일 초기화 */
+    input {background-image: none;}
+    input[type=button], input[type=reset], input[type=text],
+    input[type=password], input[type=submit],
+    input[type=search], input[type=tel], input[type=email] {
+        -webkit-appearance: none;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+    }
+
+    input[type=search]::-webkit-search-cancel-button,
+    input[type=search]::-webkit-search-decoration {
+        -webkit-appearance: none;
+    }
+    input:checked[type=checkbox] {
+        background-color: #666666;
+        -webkit-appearance: checkbox;
+    }
+
+/* ------------------------------------------------------------------------------------------------------------------- */
+
+
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@600&display=swap");
+    * {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+    font-family: "Open Sans", sans-serif;
+    background-color: #242321;
+    }
+
+    .container {
+        position: relative;
+        max-width: 1680px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    /* ------------------------------------------------------------------------------------------------------------------- */
+
+    #section5 .container {
+        max-width: none;
+    }
+
+    .js .title {
+        position: absolute;
+        top: 4%;
+        left: 6%;
+    }
+
+    .js .title h2 {
+        font-size: 6vw;
+        font-family: 'Anton', sans-serif;
+        color: #242321;
+    }
+
+    .js .js_box {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        height: 100vh;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 0 10%;
+    }
+
+    .js .absolute_wrap {
+        position: absolute;
+        overflow: hidden;
+        height: 100vh;
+        width: 60%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    .js .absolute_wrap .bgcolor {
+        position: absolute;
+        height: inherit;
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    .js .absolute_wrap .bgcolor div {
+        width: 100%;
+        height: 100%;
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+    }
+
+    .js .absolute_wrap .bgcolor div:nth-child(1) {background-color: #d3ae99;;}
+    .js .absolute_wrap .bgcolor div:nth-child(2) {background-color: #adc1a8;}
+    .js .absolute_wrap .bgcolor div:nth-child(3) {background-color: #d3d8d6;}
+
+    .js .js_box .contents_wrap {
+        overflow: hidden;
+        flex-basis: 30%;
+    }
+
+    .js .js_box .contents_wrap .contents {
+        position: relative;
+        height: inherit;
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    .js .js_box .contents_wrap .contents .txt {
+        width: 100%;
+        height: 100%;
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+    }
+
+    .js .js_box .contents_wrap .contents .txt h3 {
+        margin-bottom: 1rem;
+        font-family: 'Anton', sans-serif;
+        font-size: 4rem;
+        line-height: 1;
+        color: #242321;
+    }
+
+    .js .js_box .contents_wrap .contents .txt p {
+        margin-bottom: 1.5rem;
+        font-family: 'Roboto', AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif, serif;
+        padding-right: 25%;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .js .js_box .contents_wrap .contents .txt ul {margin: 6vh 0 4vh;}
+    .js .js_box .contents_wrap .contents .txt li {
+        font-family: 'Roboto', AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif, serif;
+        font-size: 1rem;
+        font-weight: 100;
+        color: #463c3c;
+    }
+
+    .js .js_box .contents_wrap .contents .txt .btn {
+        margin-top: 5vh;
+        overflow: hidden;
+        position: relative;
+        max-width: 220px;
+        width: 100%;
+        border: 1px solid #242321;
+        text-align: center;
+    }
+
+    .js .js_box .contents_wrap .contents .txt .btn a {
+        padding: 0.5vw;
+        display: block;
+        font-family: 'Fjalla One', sans-serif;
+        font-size: 18px;
+        text-transform: uppercase;
+        color: #242321;
+    }
+
+    .js .js_box .contents_wrap .contents .txt .btn:after {
+        content: '';
+        position: absolute;
+        left: -10%;
+        bottom: 0;
+        width: 0;
+        height: 120%;
+        transition: 0.3s;
+        transform: skewX(20deg);
+        background-color: #242321;
+        z-index: -1;
+    }
+
+    .js .js_box .contents_wrap .contents .txt .btn:hover a {
+        font-weight: bold;
+        color: #F0F0F0;
+    }
+
+    .js .js_box .contents_wrap .contents .txt .btn:hover::after {
+        left: -10%;
+        width: 120%;
+    }
+
+    .js .js_box .img_wrap {
+        overflow: hidden;
+        flex-basis: 60%;
+    }
+    
+    .js .js_box .img_wrap .jsimgs {   
+        height: 700px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        flex-basis: 40%;
+    }
+
+    .js .js_box .img_wrap .jsimgs .img {
+        height: 100%;
+        width: 100%;
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+    }
+
+    .js .js_box .scr_btn .right,
+    .js .js_box .scr_btn .left {
+        height: 60px;
+        width: 60px;
+        border: 1px solid #F0F0F0;
+        border-radius: 50%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-top: 1rem;
+        cursor: pointer;
+    }
+
+    .js .js_box .scr_btn .right:hover,
+    .js .js_box .scr_btn .left:hover {
+        background-color: #666;
+        color: #242321;
+    }
+
+    .js .js_box .scr_btn .right:active,
+    .js .js_box .scr_btn .left:active {
+        -webkit-transform: scale(0.96);
+        transform: scale(0.96);
+    }
+
+    .js .absolute_wrap .bgcolor,
+    .js .js_box .contents_wrap .contents,
+    .js .js_box .img_wrap .jsimgs {
+        -webkit-transition: 
+        -webkit-transform 0.35s cubic-bezier(0.39, 0.575, 0.565, 1);
+        transition: -webkit-transform 0.35s cubic-bezier(0.39, 0.575, 0.565, 1);
+        transition: transform 0.35s cubic-bezier(0.39, 0.575, 0.565, 1);
+        transition: transform 0.35s cubic-bezier(0.39, 0.575, 0.565, 1),
+            -webkit-transform 0.35s cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
+
+    .js .absolute_wrap .bgcolor {
+        -webkit-transition-delay: 150ms;
+        transition-delay: 150ms;
+    }
+
+    </style>
+
+</head>
+<body>
+
+    <section id="section5">
+        <div class="container">
+            <div class="js">
+                <div class="title">
+                    <h2>SCRIPT</h2>
+                </div>
+                <div class="absolute_wrap">
+                    <div class="bgcolor">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="js_box">
+                    <div class="contents_wrap">
+                        <div class="contents">
+                            <div class="txt">
+                                <h3>PARALLAX</h3>
+                                <p>Parallax, Javascript, css variables, Resolution Image</p>
+                                <ul>
+                                    <li>Parallax Scrolling / Text Effect /</li>
+                                    <li>localStorage / createElement / forEach</li>
+                                </ul>
+                                <div class="btn">
+                                    <a href="http://s0369852.dothome.co.kr/port/assets/ani/parallax.html" target="_blank">site View</a>
+                                </div>
+                            </div>
+                            <div class="txt">
+                                <h3>TODOLIST</h3>
+                                <p>Vanilla Javascript, CSS3, Background Image</p>
+                                <ul>
+                                    <li>ToDoList / Greeting / Clock</li>
+                                    <li>pageYOffset / offsetTop / forEach</li>
+                                </ul>
+                                <div class="btn">
+                                    <a href="http://s0369852.dothome.co.kr/port/assets/ani/todolist.html" target="_blank">site View</a>
+                                </div>
+                            </div>
+                            <div class="txt">
+                                <h3>MOUSEEFFECT</h3>
+                                <p>Vanilla Javascript, CSS3, Background Image</p>
+                                <ul>
+                                    <li>ToDoList / Greeting / Clock</li>
+                                    <li>pageYOffset / offsetTop / forEach</li>
+                                </ul>
+                                <div class="btn">
+                                    <a href="http://s0369852.dothome.co.kr/port/assets/ani/mouse07.html" target="_blank">site View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="img_wrap">
+                        <div class="jsimgs">
+                            <iframe class="img" src="asset/ani/parallax.html" frameborder="0"></iframe>
+                            <iframe class="img" src="asset/ani/todolist.html" frameborder="0"></iframe>
+                            <iframe class="img" src="asset/ani/mouse07.html" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                    <div class="scr_btn">
+                        <div class="right">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-right" width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f0f0f0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <polyline points="9 6 15 12 9 18" />
+                            </svg>
+                        </div>
+                        <div class="left">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-left" width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f0f0f0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <polyline points="15 6 9 12 15 18" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+
+    const btnLeft = document.querySelector(".scr_btn .left");
+    const btnRight = document.querySelector(".scr_btn .right");
+
+    const jsimgs = document.querySelector(".jsimgs");
+    const colors = document.querySelector(".bgcolor");
+    const texts = document.querySelector(".contents");
+
+    let index = 0;
+
+    function right() {
+        transform((index = index < 2 ? ++index : 0));
+    }
+
+    function left() { 
+        transform((index = index > 0 ? --index : 2));
+    }
+
+    btnLeft.addEventListener("click", left);
+    btnRight.addEventListener("click", right);
+
+    function transform(index) {
+        jsimgs.style.transform = `translateX(-${index * 100}%)`;
+        colors.style.transform = `translateX(-${index * 100}%)`;
+        texts.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    </script>
+</body>
+</html>
