@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #D3DDE6;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .top-menu {
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-menu h3 {
+            font-size: 14px;
+            font-weight: 400;
+            margin-top: 15px;
+            color: #000000;
+            text-transform: uppercase;
+        }
+
+        .battery {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .battery span {
+            margin-right: 5px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .battery img { width: 20px; }
+
+        /* .battery img[alt="품절"] {
+            width: 20px;
+            display: none;
+        } */
+
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            height: 550px;
+            background-color: rgba(242, 245, 250, 0.452);
+            border: 1px solid #F2F5FA;
+            border-radius: 20px;
+        }
+
+        .wrap {
+            overflow: hidden;
+            position: relative;
+            width: 300px;
+            height: 350px;
+            border-radius: 100%;
+            margin-top: -30px;
+        }
+
+        .hour,
+        .minute {
+            position: absolute;
+            height: 100px;
+            width: 6px;
+            margin: auto;
+            top: -27%;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: black;
+            transform-origin: bottom center;
+            transform: rotate(0deg);
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .minute {
+            position: absolute;
+            height: 130px;
+            width: 4px;
+            top: -38%;
+            left: 0;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+            transform: rotate(90deg);
+        }
+
+        .second {
+            position: absolute;
+            height: 90px;
+            width: 2px;
+            margin: auto;
+            top: -26%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 4px;
+            background-color: #FF4B3E;
+            transform-origin: bottom center;
+            transform: rotate(180deg);
+            z-index: 1;
+        }
+
+        .dot {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 100px;
+            background: white;
+            border: 2px solid #1b1b1b;
+            border-radius: 100px;
+            margin: auto;
+            z-index: 1;
+        }
+
+        .timing { 
+            text-align: center; 
+            margin-top: -20px;
+        }
+
+        .timing span{
+            font-size: 64px;
+            text-shadow: 1px 2px 4px #5f5b5b;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="card">
+        <div class="top-menu">
+            <h3>Thursday, Jan 2021</h3>
+            <div class="battery">
+                <span>56%</span>
+                <img src="/asset/img/bettery.png" alt="">
+            </div>
+        </div>
+        <div class="clock">
+            <div class="wrap">
+                <span class="hour"></span>
+                <span class="minute"></span>
+                <span class="second"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="timing">
+                <span>
+                    <span class="hours"></span>:<span class="mins"></span>
+                </span>
+                <p>Thursday, JAN 2021</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var inc = 1000;
+        clock();
+        function clock(){
+            const date = new Date();
+            const hours = ((date.getHours() + 11) % 12 +1);
+            const minutes = date.getMinutes();
+            const seconds = date.getSeconds();
+            const hour = hours * 30;
+            const minute = minutes * 6;
+            const second = seconds * 6;
+            const h = (hour < 10) ? "0" + hours : hours;
+            const m = (minutes < 10) ? "0" + miuntes : minutes;
+            document.querySelector('.hours').innerHTML = h;
+            document.querySelector('.mins').innerHTML = m;
+            document.querySelector('.hour').style.transform = `rotate(${hour}deg)`
+            document.querySelector('.minute').style.transform = `rotate(${minute}deg)`
+            document.querySelector('.second').style.transform = `rotate(${second}deg)`
+        }
+
+        setInterval(clock, inc);
+
+    </script>
+
+</body>
+</html>
