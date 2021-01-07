@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그라디언트 텍스트 애니메이션</title>
+
+    <link rel="shortcut icno" href="#">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
+            .gradient-text-ani {
+                color: #f35626;
+                background-image: linear-gradient(92deg, #f35626, #feab3a);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                -webkit-animation: Hue 5s linear infinite;
+                        animation: Hue 5s linear infinite;
+            }
+
+            @-webkit-keyframes Hue {
+                0% {
+                filter: hue-rotate(0deg);
+                }
+                to {
+                filter: hue-rotate(-1turn);
+                }
+            }
+
+            @keyframes Hue {
+                0% {
+                filter: hue-rotate(0deg);
+                }
+                to {
+                filter: hue-rotate(-1turn);
+                }
+            }
+        }
+        .text-base {
+            font-weight: 700;
+            font-size: 8vw;
+        }
+
+        body {
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <span class="gradient-text-ani text-base">Gradient</span>
+
+</body>
+</html>

@@ -104,23 +104,52 @@
             width: 50vw; 
             height: 60vh;
         }
-        .slider-btn a {
+
+        .sliders:first-child.on {
+            transform: scale(0.8);
+            margin: 0 15%;
+        }
+        .sliders:last-child.on {
+            transform: scale(0.8);
+            margin: 0 15%;
+        }
+
+        .scr_btn .right,
+        .scr_btn .left {
             position: absolute;
-            bottom: 3%;
-            transform: translateY(-50%);
-            z-index: 1000;
-            padding: 1vw;
-            background: rgba(0, 0, 0, 0.5);
-            width: auto;
-            font-size: 1.5vw;
-            text-transform: uppercase;
+            right: 10%;
+            height: 60px;
+            width: 60px;
+            border: 1px solid #F0F0F0;
+            border-radius: 50%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin-top: 1rem;
+            cursor: pointer;
         }
-        .slider-btn .prev {
-            left: 15%;
+
+        .scr_btn .right {bottom: 5%;}
+        .scr_btn .left {bottom: 13%;}
+
+        .scr_btn .right:hover,
+        .scr_btn .left:hover {
+            background-color: #666;
+            color: #242321;
         }
-        .slider-btn .next {
-            right: 15%;
+
+        .scr_btn .right:active,
+        .scr_btn .left:active {
+            -webkit-transform: scale(0.96);
+            transform: scale(0.96);
         }
+
     </style>
 
 </head>
@@ -171,9 +200,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="slider-btn">
-                    <a href="#" class="prev"><i class="fas fa-angle-left"></i></a>
-                    <a href="#" class="next"><i class="fas fa-angle-right"></i></a>
+                <!-- <div class="scr_btn">
+                    <a href="#" class="left"><i class="fas fa-angle-left"></i></a>
+                    <a href="#" class="right"><i class="fas fa-angle-right"></i></a>
+                </div> -->
+                <div class="scr_btn">
+                    <div class="right">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-right" width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f0f0f0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <polyline points="9 6 15 12 9 18" />
+                        </svg>
+                    </div>
+                    <div class="left">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-left" width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f0f0f0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <polyline points="15 6 9 12 15 18" />
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
@@ -184,7 +227,7 @@
         const sliderWrap = $(".slider-box");
         const sliderImg = $(".slider-img");
         const sliders = $(".sliders");
-        const sliderBtn = $(".slider-btn");
+        const sliderBtn = $(".scr_btn");
 
         let slideCount = sliders.length;
         let slideWidth = sliders.width();
@@ -208,10 +251,10 @@
             });
         }
 
-        sliderBtn.find(".prev").click(function(){
+        sliderBtn.find(".left").click(function(){
             moveLeft()
         });
-        sliderBtn.find(".next").click(function(){
+        sliderBtn.find(".right").click(function(){
             moveRight()
         });
     </script>
